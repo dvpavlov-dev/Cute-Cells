@@ -1,19 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class UIStartMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject _startPanel;
+    [SerializeField] private AudioSource _audioSource;
 
-    // Start is called before the first frame update
-    void Start()
+    public void StartGame()
     {
-        
+        _audioSource.Play();
+        _startPanel.transform.DOScale(0, 1);
+        Invoke(nameof(ChangeLevel), 1);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Levels()
     {
-        
+        _audioSource.Play();
+    }
+
+    public void Exit()
+    {
+        _audioSource.Play();
+        Application.Quit();
+    }
+
+    private void ChangeLevel()
+    {
+        SceneManager.LoadScene("Level 1");
     }
 }

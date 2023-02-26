@@ -7,7 +7,10 @@ public class CellsZone : MonoBehaviour
     public Action OnAllCellsDestroy;
     [SerializeField] private Cell[] _cells;
     [SerializeField] private Sprite[] _sprites;
-    public bool IsBlockedOpening;
+    [SerializeField] private AudioSource _audioS;
+    [SerializeField] private AudioClip _closeCellClip;
+    [SerializeField] private AudioClip _destroyCellClip;
+    public bool IsBlockedOpening { get; private set; }
     private int _cellsCount;
     private System.Random rand = new System.Random();
     private Cell[] _openedCells;
@@ -51,13 +54,17 @@ public class CellsZone : MonoBehaviour
             _openedCells[1].DestroyCell();
             _openedCells[1] = null;
 
+            _audioS.clip = _destroyCellClip;
+            _audioS.Play();
+
             _cellsCount -= 2;
-            CountCells();
         }
         else
         {
-            _openedCells[0]?.CloseCell();
-            _openedCells[1]?.CloseCell();
+            _audioS.clip = _closeCellClip;
+            _audioS.Play();
+            _openedCells[0].CloseCell();
+            _openedCells[1].CloseCell();
         }
 
         StartCoroutine(UnlockingOpening());
@@ -67,6 +74,7 @@ public class CellsZone : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         IsBlockedOpening = false;
+        CountCells();
     }
 
     public void CheckCountOpenCells(Cell cell)

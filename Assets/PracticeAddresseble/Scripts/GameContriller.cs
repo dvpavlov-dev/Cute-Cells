@@ -9,5 +9,6 @@ public class GameContriller : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(this);
+        LevelID = 1;
     }
 }
