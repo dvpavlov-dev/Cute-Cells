@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
@@ -15,11 +17,14 @@ public class LevelController : MonoBehaviour
         CellsZ.OnAllCellsDestroy += GameWin;
     }
 
-    public void ChangeLevel()
+    public async Task ChangeLevelAsync()
     {
-        //TODO: сюда добавить Addressable
         GameContriller.LevelID++;
-        SceneManager.LoadScene($"Level {GameContriller.LevelID}");
+        var asyncOperationHandle = Addressables.LoadSceneAsync($"Level {GameContriller.LevelID}", LoadSceneMode.Additive);
+        await asyncOperationHandle.Task;
+        //TODO: сюда добавить Addressable
+        //GameContriller.LevelID++;
+        //SceneManager.LoadScene($"Level {GameContriller.LevelID}");
     }
 
     public void BackToMenu()

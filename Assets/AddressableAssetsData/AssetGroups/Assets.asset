@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Assets
+  m_EditorClassIdentifier: 
+  m_GroupName: Assets
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 23eb88ed464c85847a3619ab990ea9b0
+  m_SerializeEntries:
+  - m_GUID: d762a6574103ffd429c7b373f43f0818
+    m_Address: Assets/HONETi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f6fe6d5fab0bbd043ab238e811a5eda8
+    m_Address: Assets/Sweet Land GUI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 6baa7c9ec19efee44a718e2313ebbcb1, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6c7bb1c02bc51644787c0aba6d01cf73, type: 2}
+    - {fileID: 11400000, guid: aede164e4302c6748bec538b9f4e7f1f, type: 2}
