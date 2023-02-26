@@ -1,25 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
-    [SerializeField] CellsZone CellsZ;
+    [SerializeField] private CellsZone CellsZ;
+    [SerializeField] private UI UIGameplay;
 
     void Start()
     {
         StartLevel();
-        CellsZ.OnAllCellsDestroy += GameOver;
+        CellsZ.OnAllCellsDestroy += GameWin;
     }
 
-    private void ChangeLevel()
+    public void ChangeLevel()
     {
-
+        //TODO: сюда добавить Addressable
     }
 
-    private void GameOver()
+    public void BackToMenu()
     {
+        //TODO: возвращение на стартовое меню
+    }
 
+    private void GameWin()
+    {
+        UIGameplay.GameWin();
     }
 
     private void StartLevel()

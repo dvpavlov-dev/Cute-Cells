@@ -7,28 +7,43 @@ public class Cell : MonoBehaviour
     public int ID;
     [SerializeField] private Image _iconCell;
     private Coroutine _openCellCoroutine;
+    private CellsZone _cellsZone;
 
-    public void CreateCell(int id, Sprite icon)
+    public void CreateCell(int id, Sprite icon, CellsZone cellsZone)
     {
         ID = id;
         _iconCell.sprite = icon;
+        _cellsZone = cellsZone;
     }
 
     public void OnClick_Cell()
     {
-        _openCellCoroutine = StartCoroutine(OpenCell());
+        if (_cellsZone.IsBlockedOpening)
+            return;
+
+        _iconCell.enabled = true;
+        _cellsZone.CheckCountOpenCells(this);
     }
 
     public void CloseCell()
     {
-        StopCoroutine(_openCellCoroutine);
+        StartCoroutine(CloseCellDelay());
+    }
+
+    private IEnumerator CloseCellDelay()
+    {
+        yield return new WaitForSeconds(1);
         _iconCell.enabled = false;
     }
 
-    private IEnumerator OpenCell()
+    public void DestroyCell()
     {
-        _iconCell.enabled = true;
-        yield return new WaitForSeconds(2);
-        _iconCell.enabled = false;
+        StartCoroutine(DestroyCellDelay());
+    }
+
+    private IEnumerator DestroyCellDelay()
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
     }
 }
