@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
 
@@ -31,7 +28,6 @@ public class UIStartMenu : MonoBehaviour
 
     private async Task ChangeLevelAsync()
     {
-        //SceneManager.LoadScene("Level 1");
         var asyncOperationHandle = Addressables.LoadSceneAsync($"Level 1");
         await asyncOperationHandle.Task;
     }

@@ -17,20 +17,21 @@ public class LevelController : MonoBehaviour
         CellsZ.OnAllCellsDestroy += GameWin;
     }
 
-    public async Task ChangeLevelAsync()
-    {
-        GameContriller.LevelID++;
-        var asyncOperationHandle = Addressables.LoadSceneAsync($"Level {GameContriller.LevelID}", LoadSceneMode.Additive);
-        await asyncOperationHandle.Task;
-        //TODO: сюда добавить Addressable
-        //GameContriller.LevelID++;
-        //SceneManager.LoadScene($"Level {GameContriller.LevelID}");
-    }
-
     public void BackToMenu()
     {
-        //TODO: возвращение на стартовое меню
         SceneManager.LoadScene("Start menu");
+    }
+
+    public void ChangeLevel()
+    {
+        ChangeLevelAsync();
+    }
+
+    private async Task ChangeLevelAsync()
+    {
+        GameContriller.LevelID++;
+        var asyncOperationHandle = Addressables.LoadSceneAsync($"Level {GameContriller.LevelID}");
+        await asyncOperationHandle.Task;
     }
 
     private void GameWin()
