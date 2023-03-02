@@ -5,12 +5,13 @@ using UnityEngine;
 public class CellsZone : MonoBehaviour
 {
     public Action OnAllCellsDestroy;
+    public bool IsBlockedOpening { get; private set; }
     [SerializeField] private Cell[] _cells;
     [SerializeField] private Sprite[] _sprites;
     [SerializeField] private AudioSource _audioS;
     [SerializeField] private AudioClip _closeCellClip;
     [SerializeField] private AudioClip _destroyCellClip;
-    public bool IsBlockedOpening { get; private set; }
+
     private int _cellsCount;
     private System.Random rand = new System.Random();
     private Cell[] _openedCells;
