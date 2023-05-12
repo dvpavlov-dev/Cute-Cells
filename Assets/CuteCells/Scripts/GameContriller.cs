@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameContriller : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     public static int LevelID;
 

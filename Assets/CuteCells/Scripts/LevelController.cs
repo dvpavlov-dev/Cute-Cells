@@ -19,6 +19,7 @@ public class LevelController : MonoBehaviour
 
     public void BackToMenu()
     {
+        GameController.LevelID = 1;
         SceneManager.LoadScene("Start menu");
     }
 
@@ -29,8 +30,8 @@ public class LevelController : MonoBehaviour
 
     private async Task ChangeLevelAsync()
     {
-        GameContriller.LevelID++;
-        var asyncOperationHandle = Addressables.LoadSceneAsync($"Level {GameContriller.LevelID}");
+        GameController.LevelID++;
+        var asyncOperationHandle = Addressables.LoadSceneAsync($"Level {GameController.LevelID}");
         await asyncOperationHandle.Task;
     }
 
